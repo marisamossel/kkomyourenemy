@@ -143,26 +143,22 @@
   const bgm = document.getElementById("bgm");
   const musicToggle = document.getElementById("music-toggle");
 
-  bebek.addEventListener("click", () => {
-    quackSound.play();
-    gsap.to(bebek, {
-      rotation: 30,
-      yoyo: true,
-      repeat: 3,
-      duration: 0.2,
-      onComplete: () => {
-        gsap.to(splash, {
-          opacity: 0,
-          duration: 1,
-          onComplete: () => {
-            splash.style.display = "none";
-            main.style.display = "block";
-            bgm.play();
-          }
-        });
-      }
-    });
+  bebek.addEventListener('click', () => {
+  splashSound.play(); // mainkan suara
+  gsap.to(splash, {
+    opacity: 0,
+    duration: 1,
+    onComplete: () => {
+      splash.style.display = 'none';
+      konten.style.display = 'block'; // tampilkan konten
+
+      // Ganti latar belakang ke gambar grainy hitam
+      document.body.style.background = "url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg7e4_f5p4kL0FJbOCfXLJoxY8ZeOMLvM7TQwmt9ttaSHaQ6lfxMUpwMpl3YNKKXXbzpYLuzzrGsOtmtOVFonZgV42x6e9CiGtecSOkjWRU9zf65JEnvnBLppQP0R5vtNwT-0GRGocYLQ4CyaAlevghlwCA90UTqnUtOBCSdkPRSMC83lNT4IXZLBPrsFCS/s2667/bg%20grainy%20black.png') no-repeat center center fixed";
+      document.body.style.backgroundSize = "cover";
+    }
   });
+});
+
 
   musicToggle.addEventListener("click", () => {
     if (bgm.paused) {
