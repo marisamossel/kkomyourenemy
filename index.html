@@ -7,11 +7,9 @@
     html, body {
       margin: 0;
       padding: 0;
-      overflow: hidden;
-      height: 100vh;
-      background: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg7e4_f5p4kL0FJbOCfXLJoxY8ZeOMLvM7TQwmt9ttaSHaQ6lfxMUpwMpl3YNKKXXbzpYLuzzrGsOtmtOVFonZgV42x6e9CiGtecSOkjWRU9zf65JEnvnBLppQP0R5vtNwT-0GRGocYLQ4CyaAlevghlwCA90UTqnUtOBCSdkPRSMC83lNT4IXZLBPrsFCS/s2667/bg%20grainy%20black.png') no-repeat center center fixed;
-      background-size: cover;
       font-family: sans-serif;
+      height: 100vh;
+      overflow: hidden;
     }
 
     #splash {
@@ -19,33 +17,25 @@
       top: 0; left: 0;
       width: 100%;
       height: 100%;
-      background-color: rgba(0,0,0,0.8);
+      background-color: #fcd641;
       display: flex;
       flex-direction: column;
-      align-items: center;
       justify-content: center;
+      align-items: center;
       z-index: 999;
-      color: white;
-      text-align: center;
+      transition: opacity 1s ease;
     }
 
     #splash img {
-      width: 150px;
-      animation: float 2s ease-in-out infinite;
+      width: 180px;
       cursor: pointer;
-    }
-
-    @keyframes float {
-      0% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
-      100% { transform: translateY(0); }
     }
 
     .artikel {
       max-width: 600px;
       margin: 100px auto;
       text-align: center;
-      display: none; /* awalnya disembunyikan */
+      display: none;
     }
 
     img#gambar {
@@ -62,15 +52,36 @@
       color: #007bff;
       transform: scale(0.5);
     }
+
+    body {
+      background: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg7e4_f5p4kL0FJbOCfXLJoxY8ZeOMLvM7TQwmt9ttaSHaQ6lfxMUpwMpl3YNKKXXbzpYLuzzrGsOtmtOVFonZgV42x6e9CiGtecSOkjWRU9zf65JEnvnBLppQP0R5vtNwT-0GRGocYLQ4CyaAlevghlwCA90UTqnUtOBCSdkPRSMC83lNT4IXZLBPrsFCS/s2667/bg%20grainy%20black.png') no-repeat center center fixed;
+      background-size: cover;
+    }
+
+    #musicToggle {
+      position: fixed;
+      top: 15px;
+      right: 15px;
+      background: #fff;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      z-index: 1000;
+      display: none; /* tampilkan hanya setelah splash hilang */
+    }
   </style>
 </head>
 <body>
 
 <!-- Splash Screen -->
 <div id="splash">
-  <img src="https://pngimg.com/uploads/rubber_duck/rubber_duck_PNG36.png" alt="bebek" id="bebek">
+  <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg8TZ-KGZ8PEyF6midcSNg8kIJVv5jpdK9i54PwVPngMhiAnXN2DvHvGm7ubPc6AkwThj4zkSKQv1BPlfH8dGPbjzhC51iO0kmrfAJFzStjyI7NBB4Y1yb-8KFr60kf7Q_TB8T4VUAneKqFHDF2H2gfRXF02oItOgH-AZrW_Iiq1DBKbQlkvhYGNWqdAJ6l/s736/black%20duck2.png" id="bebek" alt="bebek">
   <p>Klik bebek untuk masuk 🐤</p>
 </div>
+
+<!-- Tombol Music -->
+<button id="musicToggle">🔈 Musik: ON</button>
 
 <!-- Konten Utama -->
 <h1 style="text-align: center; margin-top: 50px;">Blog Interaktifku</h1>
@@ -80,31 +91,59 @@
   <div class="pesan" id="pesan">🎉 Kejutan! Kamu menemukan pesan rahasia!</div>
 </div>
 
+<!-- Suara Splash -->
+<audio id="splashSound" src="https://www.myinstants.com/media/sounds/quack.mp3" preload="auto"></audio>
+
+<!-- Musik Utama -->
+<audio id="bgMusic" src="https://ia600801.us.archive.org/26/items/ytmp3free.cc_background-sounds-of-space-10-minutes-youtubemp3free.org/ytmp3free.cc_background-sounds-of-space-10-minutes-youtubemp3free.org.mp3" loop preload="auto"></audio>
+
 <!-- GSAP CDN -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-
-<!-- Suara -->
-<audio id="splashSound" src="https://www.fesliyanstudios.com/play-mp3/387" preload="auto"></audio>
-
 <script>
   const splash = document.getElementById('splash');
   const bebek = document.getElementById('bebek');
   const konten = document.getElementById('konten');
   const splashSound = document.getElementById('splashSound');
+  const bgMusic = document.getElementById('bgMusic');
+  const musicToggle = document.getElementById('musicToggle');
+  let isMusicOn = true;
 
   bebek.addEventListener('click', () => {
-    splashSound.play(); // mainkan suara
-    gsap.to(splash, {
-      opacity: 0,
-      duration: 1,
+    splashSound.play();
+
+    gsap.to(bebek, {
+      rotation: 15,
+      yoyo: true,
+      repeat: 5,
+      duration: 0.1,
       onComplete: () => {
-        splash.style.display = 'none';
-        konten.style.display = 'block'; // tampilkan konten
+        gsap.to(splash, {
+          opacity: 0,
+          duration: 1,
+          onComplete: () => {
+            splash.style.display = 'none';
+            konten.style.display = 'block';
+            musicToggle.style.display = 'block';
+            bgMusic.play(); // putar musik
+          }
+        });
       }
     });
   });
 
-  // Animasi gambar kejutan
+  // Toggle Musik
+  musicToggle.addEventListener('click', () => {
+    if (isMusicOn) {
+      bgMusic.pause();
+      musicToggle.textContent = '🔇 Musik: OFF';
+    } else {
+      bgMusic.play();
+      musicToggle.textContent = '🔈 Musik: ON';
+    }
+    isMusicOn = !isMusicOn;
+  });
+
+  // Klik Gambar: animasi pesan
   const gambar = document.getElementById("gambar");
   const pesan = document.getElementById("pesan");
 
