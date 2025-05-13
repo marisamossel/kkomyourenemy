@@ -1,46 +1,110 @@
-<h1>Blog Interaktifku</h1>
-<div class="artikel">
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Blog Interaktifku</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      height: 100vh;
+      background: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg7e4_f5p4kL0FJbOCfXLJoxY8ZeOMLvM7TQwmt9ttaSHaQ6lfxMUpwMpl3YNKKXXbzpYLuzzrGsOtmtOVFonZgV42x6e9CiGtecSOkjWRU9zf65JEnvnBLppQP0R5vtNwT-0GRGocYLQ4CyaAlevghlwCA90UTqnUtOBCSdkPRSMC83lNT4IXZLBPrsFCS/s2667/bg%20grainy%20black.png') no-repeat center center fixed;
+      background-size: cover;
+      font-family: sans-serif;
+    }
+
+    #splash {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.8);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 999;
+      color: white;
+      text-align: center;
+    }
+
+    #splash img {
+      width: 150px;
+      animation: float 2s ease-in-out infinite;
+      cursor: pointer;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0); }
+    }
+
+    .artikel {
+      max-width: 600px;
+      margin: 100px auto;
+      text-align: center;
+      display: none; /* awalnya disembunyikan */
+    }
+
+    img#gambar {
+      width: 300px;
+      cursor: pointer;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    .pesan {
+      opacity: 0;
+      font-size: 1.2em;
+      margin-top: 20px;
+      color: #007bff;
+      transform: scale(0.5);
+    }
+  </style>
+</head>
+<body>
+
+<!-- Splash Screen -->
+<div id="splash">
+  <img src="https://pngimg.com/uploads/rubber_duck/rubber_duck_PNG36.png" alt="bebek" id="bebek">
+  <p>Klik bebek untuk masuk 🐤</p>
+</div>
+
+<!-- Konten Utama -->
+<h1 style="text-align: center; margin-top: 50px;">Blog Interaktifku</h1>
+<div class="artikel" id="konten">
   <p>Selamat datang di blogku! Klik gambar di bawah ini untuk kejutan 🎉</p>
   <img src="https://via.placeholder.com/300x200" id="gambar" alt="Gambar Klik">
   <div class="pesan" id="pesan">🎉 Kejutan! Kamu menemukan pesan rahasia!</div>
 </div>
 
-<style>
-
-  body {
-  background: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg7e4_f5p4kL0FJbOCfXLJoxY8ZeOMLvM7TQwmt9ttaSHaQ6lfxMUpwMpl3YNKKXXbzpYLuzzrGsOtmtOVFonZgV42x6e9CiGtecSOkjWRU9zf65JEnvnBLppQP0R5vtNwT-0GRGocYLQ4CyaAlevghlwCA90UTqnUtOBCSdkPRSMC83lNT4IXZLBPrsFCS/s2667/bg%20grainy%20black.png') no-repeat center center fixed;
-  background-size: cover;
-  font-family: sans-serif;
-  text-align: center;
-  padding-top: 50px;
-}
-
-  
-  .artikel {
-    max-width: 600px;
-    margin: auto;
-    text-align: center;
-  }
-
-  img {
-    width: 300px;
-    cursor: pointer;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-  }
-
-  .pesan {
-    opacity: 0;
-    font-size: 1.2em;
-    margin-top: 20px;
-    color: #007bff;
-    transform: scale(0.5);
-  }
-</style>
-
 <!-- GSAP CDN -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+<!-- Suara -->
+<audio id="splashSound" src="https://www.fesliyanstudios.com/play-mp3/387" preload="auto"></audio>
+
 <script>
+  const splash = document.getElementById('splash');
+  const bebek = document.getElementById('bebek');
+  const konten = document.getElementById('konten');
+  const splashSound = document.getElementById('splashSound');
+
+  bebek.addEventListener('click', () => {
+    splashSound.play(); // mainkan suara
+    gsap.to(splash, {
+      opacity: 0,
+      duration: 1,
+      onComplete: () => {
+        splash.style.display = 'none';
+        konten.style.display = 'block'; // tampilkan konten
+      }
+    });
+  });
+
+  // Animasi gambar kejutan
   const gambar = document.getElementById("gambar");
   const pesan = document.getElementById("pesan");
 
@@ -53,3 +117,6 @@
     });
   });
 </script>
+
+</body>
+</html>
