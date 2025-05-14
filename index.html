@@ -209,69 +209,84 @@
     }
   });
 
-  const floatingContainer = document.getElementById("floating-container");
-  const unsplashKeywords = "retro,grainy,futuristic,art,aesthetic,dark,grunge,texture,black,white,mono";
+ const floatingContainer = document.getElementById("floating-container");
+const unsplashKeywords = "retro,grainy,futuristic,art,aesthetic,dark,grunge,texture,black,white,mono";
 
-  const imageUrls = [
-  "https://i.pinimg.com/736x/37/2d/f6/372df6c8f44fdc73c54eb5fb83d6fd74.jpg",
-  "https://i.pinimg.com/736x/7a/8c/15/7a8c15be85981128717df9e4a4e1fc1b.jpg",
-  "https://i.pinimg.com/736x/6b/9e/97/6b9e975c4b36d6f393d71a16ab45f081.jpg",
-  "https://i.pinimg.com/736x/c0/89/d2/c089d257351cc6ddbc972c79d06af2fd.jpg",
-  "https://i.pinimg.com/736x/2f/61/f7/2f61f7519e6448ec077183912e74f609.jpg",
-  "https://i.pinimg.com/736x/24/21/46/242146a46de1c14ac897d23e84d15f79.jpg",
-  "https://i.pinimg.com/736x/9d/f6/f9/9df6f930ae298d07466849d21d3e3bb6.jpg",
-  "https://i.pinimg.com/736x/15/29/7f/15297fbdd57b0758ab3864d9f221a1ee.jpg",
-  "https://i.pinimg.com/736x/66/a7/b5/66a7b59845c6613e2a9f0dd08dbf68bb.jpg",
-  "https://i.pinimg.com/736x/cd/8e/12/cd8e127c43fb542aff81ce43b99bd5e0.jpg",
-  "https://i.pinimg.com/736x/8f/e9/8f/8fe98fb35ad5ef77ed8f7518bb80fd94.jpg",
-  "https://i.pinimg.com/736x/46/b2/8d/46b28d267bd74adbd002cf96c4dbe187.jpg",
-  "https://i.pinimg.com/736x/19/84/61/1984614b28c1eb0c0583ba2e6b8fc4ed.jpg",
-  "https://i.pinimg.com/736x/e5/13/84/e5138481ff469e36fdc141cc37df7bce.jpg",
-  "https://i.pinimg.com/736x/35/d4/e8/35d4e8aaa253eae2ffda4d64368296fc.jpg",
-  "https://i.pinimg.com/736x/dc/90/25/dc9025926730db72a099d153b12f5ea7.jpg",
-  "https://i.pinimg.com/736x/ca/8a/d0/ca8ad0f6b67618a4b1d6c83de36dd4b8.jpg",
-  "https://i.pinimg.com/736x/2a/ed/aa/2aedaa0c5a6746b3e8644ed4b62f3be4.jpg",
-  "https://i.pinimg.com/736x/72/34/13/72341334886c90a1a61bc60f420f6ead.jpg",
-  "https://i.pinimg.com/736x/d9/81/0d/d9810dabb5997e8af1be9bcb506a9b0c.jpg"
+const imageUrls = \[
+"[https://i.pinimg.com/736x/37/2d/f6/372df6c8f44fdc73c54eb5fb83d6fd74.jpg](https://i.pinimg.com/736x/37/2d/f6/372df6c8f44fdc73c54eb5fb83d6fd74.jpg)",
+"[https://i.pinimg.com/736x/7a/8c/15/7a8c15be85981128717df9e4a4e1fc1b.jpg](https://i.pinimg.com/736x/7a/8c/15/7a8c15be85981128717df9e4a4e1fc1b.jpg)",
+"[https://i.pinimg.com/736x/6b/9e/97/6b9e975c4b36d6f393d71a16ab45f081.jpg](https://i.pinimg.com/736x/6b/9e/97/6b9e975c4b36d6f393d71a16ab45f081.jpg)",
+"[https://i.pinimg.com/736x/c0/89/d2/c089d257351cc6ddbc972c79d06af2fd.jpg](https://i.pinimg.com/736x/c0/89/d2/c089d257351cc6ddbc972c79d06af2fd.jpg)",
+"[https://i.pinimg.com/736x/2f/61/f7/2f61f7519e6448ec077183912e74f609.jpg](https://i.pinimg.com/736x/2f/61/f7/2f61f7519e6448ec077183912e74f609.jpg)",
+"[https://i.pinimg.com/736x/24/21/46/242146a46de1c14ac897d23e84d15f79.jpg](https://i.pinimg.com/736x/24/21/46/242146a46de1c14ac897d23e84d15f79.jpg)",
+"[https://i.pinimg.com/736x/9d/f6/f9/9df6f930ae298d07466849d21d3e3bb6.jpg](https://i.pinimg.com/736x/9d/f6/f9/9df6f930ae298d07466849d21d3e3bb6.jpg)",
+"[https://i.pinimg.com/736x/15/29/7f/15297fbdd57b0758ab3864d9f221a1ee.jpg](https://i.pinimg.com/736x/15/29/7f/15297fbdd57b0758ab3864d9f221a1ee.jpg)",
+"[https://i.pinimg.com/736x/66/a7/b5/66a7b59845c6613e2a9f0dd08dbf68bb.jpg](https://i.pinimg.com/736x/66/a7/b5/66a7b59845c6613e2a9f0dd08dbf68bb.jpg)",
+"[https://i.pinimg.com/736x/cd/8e/12/cd8e127c43fb542aff81ce43b99bd5e0.jpg](https://i.pinimg.com/736x/cd/8e/12/cd8e127c43fb542aff81ce43b99bd5e0.jpg)",
+"[https://i.pinimg.com/736x/8f/e9/8f/8fe98fb35ad5ef77ed8f7518bb80fd94.jpg](https://i.pinimg.com/736x/8f/e9/8f/8fe98fb35ad5ef77ed8f7518bb80fd94.jpg)",
+"[https://i.pinimg.com/736x/46/b2/8d/46b28d267bd74adbd002cf96c4dbe187.jpg](https://i.pinimg.com/736x/46/b2/8d/46b28d267bd74adbd002cf96c4dbe187.jpg)",
+"[https://i.pinimg.com/736x/19/84/61/1984614b28c1eb0c0583ba2e6b8fc4ed.jpg](https://i.pinimg.com/736x/19/84/61/1984614b28c1eb0c0583ba2e6b8fc4ed.jpg)",
+"[https://i.pinimg.com/736x/e5/13/84/e5138481ff469e36fdc141cc37df7bce.jpg](https://i.pinimg.com/736x/e5/13/84/e5138481ff469e36fdc141cc37df7bce.jpg)",
+"[https://i.pinimg.com/736x/35/d4/e8/35d4e8aaa253eae2ffda4d64368296fc.jpg](https://i.pinimg.com/736x/35/d4/e8/35d4e8aaa253eae2ffda4d64368296fc.jpg)",
+"[https://i.pinimg.com/736x/dc/90/25/dc9025926730db72a099d153b12f5ea7.jpg](https://i.pinimg.com/736x/dc/90/25/dc9025926730db72a099d153b12f5ea7.jpg)",
+"[https://i.pinimg.com/736x/ca/8a/d0/ca8ad0f6b67618a4b1d6c83de36dd4b8.jpg](https://i.pinimg.com/736x/ca/8a/d0/ca8ad0f6b67618a4b1d6c83de36dd4b8.jpg)",
+"[https://i.pinimg.com/736x/2a/ed/aa/2aedaa0c5a6746b3e8644ed4b62f3be4.jpg](https://i.pinimg.com/736x/2a/ed/aa/2aedaa0c5a6746b3e8644ed4b62f3be4.jpg)",
+"[https://i.pinimg.com/736x/72/34/13/72341334886c90a1a61bc60f420f6ead.jpg](https://i.pinimg.com/736x/72/34/13/72341334886c90a1a61bc60f420f6ead.jpg)",
+"[https://i.pinimg.com/736x/d9/81/0d/d9810dabb5997e8af1be9bcb506a9b0c.jpg](https://i.pinimg.com/736x/d9/81/0d/d9810dabb5997e8af1be9bcb506a9b0c.jpg)",
+"[https://i.pinimg.com/736x/8b/e9/4a/8be94a47732976aa3ec03ec18536d60f.jpg](https://i.pinimg.com/736x/8b/e9/4a/8be94a47732976aa3ec03ec18536d60f.jpg)",
+"[https://i.pinimg.com/736x/01/7e/9c/017e9cc20ce04b2a6cb35022f4fea2cf.jpg](https://i.pinimg.com/736x/01/7e/9c/017e9cc20ce04b2a6cb35022f4fea2cf.jpg)",
+"[https://i.pinimg.com/736x/fb/9b/94/fb9b947d98925524989f7d84c76370bd.jpg](https://i.pinimg.com/736x/fb/9b/94/fb9b947d98925524989f7d84c76370bd.jpg)",
+"[https://i.pinimg.com/736x/b9/a5/cc/b9a5ccaafaee6cea402c3e9ed4ef6981.jpg](https://i.pinimg.com/736x/b9/a5/cc/b9a5ccaafaee6cea402c3e9ed4ef6981.jpg)",
+"[https://i.pinimg.com/736x/c0/02/bb/c002bb6196e247488c6213c45d887266.jpg](https://i.pinimg.com/736x/c0/02/bb/c002bb6196e247488c6213c45d887266.jpg)",
+"[https://i.pinimg.com/736x/f8/70/4b/f8704b46eddd9b735b10f8a76732416e.jpg](https://i.pinimg.com/736x/f8/70/4b/f8704b46eddd9b735b10f8a76732416e.jpg)",
+"[https://i.pinimg.com/736x/16/e6/fe/16e6fe32c46330366a4528b11477e091.jpg](https://i.pinimg.com/736x/16/e6/fe/16e6fe32c46330366a4528b11477e091.jpg)",
+"[https://i.pinimg.com/736x/91/49/57/91495747acb1531c83daa50c3e706fc5.jpg](https://i.pinimg.com/736x/91/49/57/91495747acb1531c83daa50c3e706fc5.jpg)",
+"[https://i.pinimg.com/736x/26/d0/ac/26d0ac9ce0555d05c89c39aedbfc47de.jpg](https://i.pinimg.com/736x/26/d0/ac/26d0ac9ce0555d05c89c39aedbfc47de.jpg)",
+"[https://i.pinimg.com/736x/b0/e6/be/b0e6beeb461b518293f0f481a5df7043.jpg](https://i.pinimg.com/736x/b0/e6/be/b0e6beeb461b518293f0f481a5df7043.jpg)",
+"[https://i.pinimg.com/736x/25/d4/6f/25d46f885da6a8e1d99067b5dc92893c.jpg](https://i.pinimg.com/736x/25/d4/6f/25d46f885da6a8e1d99067b5dc92893c.jpg)",
+"[https://i.pinimg.com/736x/8a/29/30/8a2930e867882ec44dfcf40a2a5cd635.jpg](https://i.pinimg.com/736x/8a/29/30/8a2930e867882ec44dfcf40a2a5cd635.jpg)"
 ];
 
 function getRandomItems(arr, n) {
-  return arr.sort(() => 0.5 - Math.random()).slice(0, n);
+return arr.sort(() => 0.5 - Math.random()).slice(0, n);
 }
 
 const container = document.getElementById("floating-container");
 const selectedImages = getRandomItems(imageUrls, 20);
 
 selectedImages.forEach((url) => {
-  const img = document.createElement("img");
-  img.src = url;
-  img.className = "floating-img";
-  img.style.top = `${Math.random() * 80 + 5}%`;
-  img.style.left = `${Math.random() * 80 + 5}%`;
+const img = document.createElement("img");
+img.src = url;
+img.className = "floating-img";
+img.style.top = `${Math.random() * 80 + 5}%`;
+img.style.left = `${Math.random() * 80 + 5}%`;
 
-  img.onmousedown = function (event) {
-    let shiftX = event.clientX - img.getBoundingClientRect().left;
-    let shiftY = event.clientY - img.getBoundingClientRect().top;
+img.onmousedown = function (event) {
+let shiftX = event.clientX - img.getBoundingClientRect().left;
+let shiftY = event.clientY - img.getBoundingClientRect().top;
 
-    function moveAt(pageX, pageY) {
-      img.style.left = pageX - shiftX + 'px';
-      img.style.top = pageY - shiftY + 'px';
-    }
+```
+function moveAt(pageX, pageY) {
+  img.style.left = pageX - shiftX + 'px';
+  img.style.top = pageY - shiftY + 'px';
+}
 
-    function onMouseMove(event) {
-      moveAt(event.pageX, event.pageY);
-    }
+function onMouseMove(event) {
+  moveAt(event.pageX, event.pageY);
+}
 
-    document.addEventListener('mousemove', onMouseMove);
+document.addEventListener('mousemove', onMouseMove);
 
-    img.onmouseup = function () {
-      document.removeEventListener('mousemove', onMouseMove);
-      img.onmouseup = null;
-    };
-  };
-  img.ondragstart = () => false;
+img.onmouseup = function () {
+  document.removeEventListener('mousemove', onMouseMove);
+  img.onmouseup = null;
+};
+```
 
-  container.appendChild(img);
+};
+img.ondragstart = () => false;
+
+container.appendChild(img);
 });
 
 
@@ -303,18 +318,28 @@ selectedImages.forEach((url) => {
   }
 
   function sebarkanMenu() {
-    const menuButtons = document.querySelectorAll('#menu button');
-    const windowWidth = window.innerWidth;
-    const windowHeight = window.innerHeight;
+  const menuButtons = document.querySelectorAll('#menu button');
+  const windowWidth = window.innerWidth;
+  const windowHeight = window.innerHeight;
 
-    menuButtons.forEach(button => {
-      button.style.position = 'absolute';
-      const randomLeft = Math.floor(Math.random() * (windowWidth - 150));
-      const randomTop = Math.floor(Math.random() * (windowHeight - 50));
-      button.style.left = `${randomLeft}px`;
-      button.style.top = `${randomTop}px`;
-    });
-  }
+  menuButtons.forEach(button => {
+    button.style.position = 'absolute';
+
+    // Ukuran tombol — kalau kamu tahu ukurannya pasti, pakai angka tetap
+    const buttonWidth = button.offsetWidth || 150;
+    const buttonHeight = button.offsetHeight || 50;
+
+    const maxLeft = windowWidth - buttonWidth;
+    const maxTop = windowHeight - buttonHeight;
+
+    const randomLeft = Math.floor(Math.random() * maxLeft);
+    const randomTop = Math.floor(Math.random() * maxTop);
+
+    button.style.left = `${randomLeft}px`;
+    button.style.top = `${randomTop}px`;
+  });
+}
+
 
   window.addEventListener("load", sebarkanMenu);
   window.addEventListener("resize", sebarkanMenu);
