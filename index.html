@@ -1,103 +1,270 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>kkom's</title>
+
   <style>
-    body {
+    @import url('https://fonts.googleapis.com/css2?family=Space+Mono&display=swap');
+
+    html, body {
       margin: 0;
+      padding: 0;
+      height: 100%;
       overflow: hidden;
-      background: black;
-      color: white;
-      font-family: monospace;
+      font-family: sans-serif;
+      background: #000;
+      cursor: url("https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh3KYZBMe1_dRwIZX35YAdOMDd_JxyI_pAJNPSXezAQUmN6aJztGYey9VmCPrMAnj64rS3mFkUaaNHDYnV2EWGqbRFUQbIILGq9N52xCGHPhtQ7rTJlzvJVgvHh9se-zwU0QyYS_56VNmZNkTKjUdKmEnXiAQMZLcmhblpnlBO-H0A_4TnTzfQ91OzoN9iD/s16000/koi%20moon_cursor.png"), auto;
     }
 
-    .teks {
+    #judul {
       position: absolute;
-      top: 20px;
-      left: 20px;
-      font-size: 24px;
+      top: 5%;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: 'Space Mono', monospace;
+      font-size: 28px;
+      color: white;
+      z-index: 20;
+      white-space: nowrap;
+      overflow: hidden;
+      text-shadow: 0 0 8px white;
+      display: none;
+      align-items: center;
+    }
+
+    .cursor {
+      font-weight: bold;
+      margin-left: 5px;
+      animation: blink 0.7s steps(1) infinite;
+      color: white;
+      text-shadow: 0 0 6px white;
+    }
+
+    @keyframes blink {
+      0%, 50% { opacity: 1; }
+      51%, 100% { opacity: 0; }
+    }
+
+    #splash {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #fcd641;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      flex-direction: column;
+    }
+
+    #splash img {
+      width: 150px;
+      cursor: pointer;
+      animation: float 2s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+      100% { transform: translateY(0); }
+    }
+
+    #main {
+      display: none;
+      width: 100%;
+      height: 100%;
+      position: relative;
+      background: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg7e4_f5p4kL0FJbOCfXLJoxY8ZeOMLvM7TQwmt9ttaSHaQ6lfxMUpwMpl3YNKKXXbzpYLuzzrGsOtmtOVFonZgV42x6e9CiGtecSOkjWRU9zf65JEnvnBLppQP0R5vtNwT-0GRGocYLQ4CyaAlevghlwCA90UTqnUtOBCSdkPRSMC83lNT4IXZLBPrsFCS/s2667/bg%20grainy%20black.png') no-repeat center center fixed;
+      background-size: cover;
+    }
+
+    .floating-img {
+      width: 120px;
+      height: 120px;
+      position: absolute;
+      border-radius: 12px;
+      cursor: move;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      transition: box-shadow 0.3s ease;
+    }
+
+    .floating-img:hover {
+      box-shadow: 0 0 15px 5px white;
+    }
+
+    #menu {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 10;
+      text-align: center;
     }
 
     #menu button {
-      position: absolute;
-      z-index: 2;
+      display: block;
+      margin: 10px auto;
       padding: 10px 20px;
-      background: rgba(255, 255, 255, 0.1);
-      border: 1px solid white;
+      font-size: 18px;
+      border: none;
+      border-radius: 10px;
+      background: #111;
       color: white;
-      font-family: monospace;
       cursor: pointer;
+      transition: background 0.3s;
     }
 
-    .gambar {
+    #menu button:hover {
+      background: #333;
+      transform: scale(1.05);
+      transition: 0.3s ease;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+    }
+
+    #music-toggle {
       position: absolute;
-      width: 120px;
-      height: 120px;
-      object-fit: cover;
-      cursor: grab;
-      z-index: 1;
+      bottom: 20px;
+      right: 20px;
+      background: #111;
+      color: #fff;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 8px;
+      cursor: pointer;
+      z-index: 11;
     }
   </style>
 </head>
 <body>
-  <div class="teks"></div>
+
+<div id="judul"><span class="teks"></span><span class="cursor">|</span></div>
+
+<div id="splash">
+  <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg8TZ-KGZ8PEyF6midcSNg8kIJVv5jpdK9i54PwVPngMhiAnXN2DvHvGm7ubPc6AkwThj4zkSKQv1BPlfH8dGPbjzhC51iO0kmrfAJFzStjyI7NBB4Y1yb-8KFr60kf7Q_TB8T4VUAneKqFHDF2H2gfRXF02oItOgH-AZrW_Iiq1DBKbQlkvhYGNWqdAJ6l/s736/black%20duck2.png" id="bebek" />
+  <p>pet me to enter 🐤</p>
+</div>
+
+<div id="main">
+  <div id="floating-container"></div>
+
   <div id="menu">
-    <button>home</button>
-    <button>about</button>
-    <button>playlist</button>
-    <button>game</button>
-    <button>my blacklist</button>
-    <button>my story</button>
+    <button onclick="alert('Home clicked')">Home</button>
+    <button onclick="alert('About clicked')">About</button>
+    <button onclick="alert('Playlist clicked')">Playlist</button>
+    <button onclick="alert('Game clicked')">Game</button>
+    <button onclick="alert('My Blacklist clicked')">My Blacklist</button>
+    <button onclick="alert('My Story clicked')">My Story</button>
   </div>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/Draggable.min.js"></script>
-  <script>
-    const imageUrls = [
-      'https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&auto=format&fit=crop&w=120&q=80',
-      'https://images.unsplash.com/photo-1524338198850-8a1dc53fcd3b?ixlib=rb-4.0.3&auto=format&fit=crop&w=120&q=80',
-      'https://images.unsplash.com/photo-1549880186-7c236d6b22f2?ixlib=rb-4.0.3&auto=format&fit=crop&w=120&q=80',
-      // Tambahkan lebih banyak URL jika mau
-    ];
+  <button id="music-toggle">🔊 Music</button>
+</div>
 
-    imageUrls.forEach((url) => {
-      const img = document.createElement('img');
-      img.src = url;
-      img.classList.add('gambar');
-      document.body.appendChild(img);
-      Draggable.create(img, { type: 'x,y' });
-    });
+<audio id="quackSound" src="https://www.myinstants.com/media/sounds/quack.mp3"></audio>
+<audio id="bgm" src="https://ia600801.us.archive.org/26/items/ytmp3free.cc_background-sounds-of-space-10-minutes-youtubemp3free.org/ytmp3free.cc_background-sounds-of-space-10-minutes-youtubemp3free.org.mp3" loop></audio>
 
-    const text = "hi! welcome to my space";
-    const teksEl = document.querySelector(".teks");
-    let i = 0;
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/Draggable.min.js"></script>
 
-    function ketik() {
-      if (i < text.length) {
-        teksEl.textContent += text.charAt(i);
-        i++;
-        setTimeout(ketik, 80);
+<script>
+  const splash = document.getElementById("splash");
+  const bebek = document.getElementById("bebek");
+  const main = document.getElementById("main");
+  const quackSound = document.getElementById("quackSound");
+  const bgm = document.getElementById("bgm");
+  const musicToggle = document.getElementById("music-toggle");
+
+  bebek.addEventListener("click", () => {
+    quackSound.play();
+    gsap.to(bebek, {
+      rotation: 30,
+      yoyo: true,
+      repeat: 3,
+      duration: 0.2,
+      onComplete: () => {
+        gsap.to(splash, {
+          opacity: 0,
+          duration: 1,
+          onComplete: () => {
+            splash.style.display = "none";
+            main.style.display = "block";
+            document.getElementById("judul").style.display = "flex";
+            bgm.play();
+            ketik();
+          }
+        });
       }
+    });
+  });
+
+  musicToggle.addEventListener("click", () => {
+    if (bgm.paused) {
+      bgm.play();
+      musicToggle.innerText = "🔊 Music";
+    } else {
+      bgm.pause();
+      musicToggle.innerText = "🔇 Music";
     }
-    ketik();
+  });
 
-    function sebarkanMenu() {
-      const menuButtons = document.querySelectorAll('#menu button');
-      const windowWidth = window.innerWidth;
-      const windowHeight = window.innerHeight;
+  const floatingContainer = document.getElementById("floating-container");
+  const unsplashKeywords = "retro,grainy,futuristic,art,aesthetic,dark,grunge,texture,black,white,mono";
 
-      menuButtons.forEach(button => {
-        const randomLeft = Math.floor(Math.random() * (windowWidth - 150));
-        const randomTop = Math.floor(Math.random() * (windowHeight - 50));
-        button.style.left = `${randomLeft}px`;
-        button.style.top = `${randomTop}px`;
-      });
+  for (let i = 0; i < 20; i++) {
+    const img = document.createElement("img");
+    img.className = "floating-img";
+    img.src = `https://source.unsplash.com/120x120/?${unsplashKeywords}&sig=${Math.random()}`;
+    img.style.top = `${Math.floor(Math.random() * 80) + 5}%`;
+    img.style.left = `${Math.floor(Math.random() * 80) + 5}%`;
+    floatingContainer.appendChild(img);
+  }
+
+  setTimeout(() => {
+    Draggable.create(".floating-img", {
+      type: "x,y",
+      edgeResistance: 0.75,
+      bounds: "body",
+      inertia: true,
+      onDragStart: function () {
+        gsap.to(this.target, { scale: 1.05, duration: 0.2 });
+      },
+      onRelease: function () {
+        gsap.to(this.target, { scale: 1, duration: 0.3, ease: "elastic.out(1, 0.4)" });
+      }
+    });
+  }, 100);
+
+  const text = "hi! welcome to my space";
+  const teksEl = document.querySelector(".teks");
+  let i = 0;
+
+  function ketik() {
+    if (i < text.length) {
+      teksEl.textContent += text.charAt(i);
+      i++;
+      setTimeout(ketik, 80);
     }
+  }
 
-    window.addEventListener("resize", sebarkanMenu);
-    window.addEventListener("load", sebarkanMenu);
-  </script>
+  function sebarkanMenu() {
+    const menuButtons = document.querySelectorAll('#menu button');
+    const windowWidth = window.innerWidth;
+    const windowHeight = window.innerHeight;
+
+    menuButtons.forEach(button => {
+      button.style.position = 'absolute';
+      const randomLeft = Math.floor(Math.random() * (windowWidth - 150));
+      const randomTop = Math.floor(Math.random() * (windowHeight - 50));
+      button.style.left = `${randomLeft}px`;
+      button.style.top = `${randomTop}px`;
+    });
+  }
+
+  window.addEventListener("load", sebarkanMenu);
+  window.addEventListener("resize", sebarkanMenu);
+</script>
+
 </body>
 </html>
