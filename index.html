@@ -3,62 +3,73 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>My Space</title>
+  <title>kkom's</title>
   <style>
     body {
       margin: 0;
-      padding: 0;
+      overflow: hidden;
       background: black;
       color: white;
       font-family: monospace;
-      overflow: hidden;
     }
 
     .teks {
-      position: fixed;
+      position: absolute;
       top: 20px;
       left: 20px;
       font-size: 24px;
-      z-index: 1000;
-    }
-
-    #menu {
-      position: relative;
-      width: 100vw;
-      height: 100vh;
-      z-index: 500;
     }
 
     #menu button {
       position: absolute;
-      background-color: rgba(255, 255, 255, 0.1);
-      color: white;
-      border: 1px solid white;
+      z-index: 2;
       padding: 10px 20px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid white;
+      color: white;
+      font-family: monospace;
       cursor: pointer;
-      transition: 0.3s ease;
-      z-index: 600;
     }
 
-    #menu button:hover {
-      background-color: white;
-      color: black;
+    .gambar {
+      position: absolute;
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
+      cursor: grab;
+      z-index: 1;
     }
   </style>
 </head>
 <body>
   <div class="teks"></div>
   <div id="menu">
-    <button onclick="alert('Home clicked')">Home</button>
-    <button onclick="alert('About clicked')">About</button>
-    <button onclick="alert('Playlist clicked')">Playlist</button>
-    <button onclick="alert('Game clicked')">Game</button>
-    <button onclick="alert('My Blacklist clicked')">My Blacklist</button>
-    <button onclick="alert('My Story clicked')">My Story</button>
+    <button>home</button>
+    <button>about</button>
+    <button>playlist</button>
+    <button>game</button>
+    <button>my blacklist</button>
+    <button>my story</button>
   </div>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/Draggable.min.js"></script>
   <script>
-    // Efek ketik teks pembuka
+    const imageUrls = [
+      'https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&auto=format&fit=crop&w=120&q=80',
+      'https://images.unsplash.com/photo-1524338198850-8a1dc53fcd3b?ixlib=rb-4.0.3&auto=format&fit=crop&w=120&q=80',
+      'https://images.unsplash.com/photo-1549880186-7c236d6b22f2?ixlib=rb-4.0.3&auto=format&fit=crop&w=120&q=80',
+      // Tambahkan lebih banyak URL jika mau
+    ];
+
+    imageUrls.forEach((url) => {
+      const img = document.createElement('img');
+      img.src = url;
+      img.classList.add('gambar');
+      document.body.appendChild(img);
+      Draggable.create(img, { type: 'x,y' });
+    });
+
     const text = "hi! welcome to my space";
     const teksEl = document.querySelector(".teks");
     let i = 0;
@@ -70,8 +81,8 @@
         setTimeout(ketik, 80);
       }
     }
+    ketik();
 
-    // Fungsi menyebarkan tombol menu secara acak
     function sebarkanMenu() {
       const menuButtons = document.querySelectorAll('#menu button');
       const windowWidth = window.innerWidth;
@@ -85,14 +96,8 @@
       });
     }
 
-    // Jalankan saat halaman dimuat
-    window.addEventListener("load", () => {
-      ketik();
-      sebarkanMenu();
-    });
-
-    // Atur ulang posisi tombol saat jendela diubah ukurannya
     window.addEventListener("resize", sebarkanMenu);
+    window.addEventListener("load", sebarkanMenu);
   </script>
 </body>
 </html>
