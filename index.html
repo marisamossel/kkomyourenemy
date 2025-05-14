@@ -2,43 +2,63 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>My Space</title>
   <style>
     body {
       margin: 0;
-      overflow: hidden;
-      font-family: sans-serif;
+      padding: 0;
       background: black;
       color: white;
+      font-family: monospace;
+      overflow: hidden;
     }
 
     .teks {
+      position: fixed;
+      top: 20px;
+      left: 20px;
       font-size: 24px;
-      padding: 20px;
+      z-index: 1000;
+    }
+
+    #menu {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      z-index: 500;
     }
 
     #menu button {
       position: absolute;
-      padding: 10px 20px;
-      background: rgba(255, 255, 255, 0.1);
+      background-color: rgba(255, 255, 255, 0.1);
       color: white;
       border: 1px solid white;
+      padding: 10px 20px;
       cursor: pointer;
+      transition: 0.3s ease;
+      z-index: 600;
+    }
+
+    #menu button:hover {
+      background-color: white;
+      color: black;
     }
   </style>
 </head>
 <body>
   <div class="teks"></div>
   <div id="menu">
-    <button>Home</button>
-    <button>About</button>
-    <button>Game</button>
-    <button>Playlist</button>
+    <button onclick="alert('Home clicked')">Home</button>
+    <button onclick="alert('About clicked')">About</button>
+    <button onclick="alert('Playlist clicked')">Playlist</button>
+    <button onclick="alert('Game clicked')">Game</button>
+    <button onclick="alert('My Blacklist clicked')">My Blacklist</button>
+    <button onclick="alert('My Story clicked')">My Story</button>
   </div>
 
   <script>
-    // Animasi ketik teks
+    // Efek ketik teks pembuka
     const text = "hi! welcome to my space";
     const teksEl = document.querySelector(".teks");
     let i = 0;
@@ -51,7 +71,7 @@
       }
     }
 
-    // Menyebarkan tombol menu secara acak
+    // Fungsi menyebarkan tombol menu secara acak
     function sebarkanMenu() {
       const menuButtons = document.querySelectorAll('#menu button');
       const windowWidth = window.innerWidth;
@@ -65,11 +85,14 @@
       });
     }
 
-    window.addEventListener("resize", sebarkanMenu);
+    // Jalankan saat halaman dimuat
     window.addEventListener("load", () => {
       ketik();
       sebarkanMenu();
     });
+
+    // Atur ulang posisi tombol saat jendela diubah ukurannya
+    window.addEventListener("resize", sebarkanMenu);
   </script>
 </body>
 </html>
