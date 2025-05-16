@@ -99,35 +99,24 @@
 
 #menu {
   position: relative;
-  top: 7%;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  max-height: 99vh;
-  pointer-events: none;
-  overflow: hidden;
+  width: 100%;
+  height: 100vh; /* pastikan tombol punya ruang */
+  pointer-events: auto;
+  z-index: 1;
 }
 
 #menu button {
   position: absolute;
-  pointer-events: auto;
   padding: 10px 20px;
   border-radius: 8px;
   border: none;
-  background: rgba(0, 0, 0, 0.8); /* Hitam dengan 80% opacity */
-  color: white; /* Warna teks putih */
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
   font-family: monospace;
   font-size: 14px;
+  transition: all 0.3s ease;
+  cursor: url("https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjg6LXUElpu5_m4_1OdNZAssDvmfkzsAPkYFx2G1ed9Qig1axTybzTFOjoQIr4LkMfsrp99ML2oUkSALLW3ZIj80Xmor5ccl-DKEvSxCiKQbKfYcnfwgTdn_6sOd5Zkp0v5WTn6rYFZrPX9bp3glcqD9VN8vYUrq3XeTkG6XTVX-Ct5Gs4F_WnHkV2tnwQG/s89/koi%20moon_cursor_kecil.png"), auto;
 }
-
-#home { top: 280px; left: 80px; }
-#story { top: 300px; left: 180px; }
-#blacklist { top: 320px; left: 280px; }
-#about { top: 350px; left: 120px; }
-#playlist { top: 370px; left: 250px; }
-#game { top: 400px; left: 380px; }
-
-
     #menu button:hover {
       background: #333;
       transform: scale(1.05);
@@ -165,7 +154,7 @@
 
 #instruction1 {
   position: fixed;
-  top: calc(50% + 40px); /* 40px lebih bawah dari instruction */
+  top: calc(50% + 20px); /* 40px lebih bawah dari instruction */
   left: 50%;
   transform: translate(-50%, -50%);
   color: yellow;
@@ -198,13 +187,14 @@
   <div id="floating-container"></div>
 
   <div id="menu">
-  <button onclick="window.location.href='https://marisamossel.github.io/kkomyourenemy/'">Home</button>
-  <button onclick="window.location.href='https://marisamossel.github.io/kkomyourenemy/about.html'">About</button>
-  <button onclick="window.location.href='https://marisamossel.github.io/kkomyourenemy/playlist.html'">Playlist</button>
-  <button onclick="window.location.href='https://marisamossel.github.io/kkomyourenemy/game.html'">Game</button>
-  <button onclick="window.location.href='https://marisamossel.github.io/kkomyourenemy/blacklist.html'">My Blacklist</button>
-  <button onclick="window.location.href='https://marisamossel.github.io/kkomyourenemy/story.html'">My Story</button>
+  <button style="top: 15%; left: 20%;" onclick="window.location.href='https://marisamossel.github.io/kkomyourenemy/'">Home</button>
+  <button style="top: 30%; left: 60%;" onclick="window.location.href='https://marisamossel.github.io/kkomyourenemy/about.html'">About</button>
+  <button style="top: 60%; left: 20%;" onclick="window.location.href='https://marisamossel.github.io/kkomyourenemy/playlist.html'">Playlist</button>
+  <button style="top: 85%; left: 10%;" onclick="window.location.href='https://marisamossel.github.io/kkomyourenemy/game.html'">Game</button>
+  <button style="top: 75%; left: 70%;" onclick="window.location.href='https://marisamossel.github.io/kkomyourenemy/blacklist.html'">My Blacklist</button>
+  <button style="top: 25%; left: 80%;" onclick="window.location.href='https://marisamossel.github.io/kkomyourenemy/story.html'">My Story</button>
 </div>
+
 
 <div id="instruction">coba dirapihin kak foto-fotonya, biar nemu menunya</div>
 <div id="instruction1">menunya ada 6 btw</div>
@@ -367,20 +357,6 @@ selectedImages.forEach((url) => {
       i++;
       setTimeout(ketik, 80);
     }
-  }
-
-  function sebarkanMenu() {
-    const menuButtons = document.querySelectorAll('#menu button');
-    const windowWidth = window.innerWidth;
-    const windowHeight = window.innerHeight;
-
-    menuButtons.forEach(button => {
-      button.style.position = 'absolute';
-      const randomLeft = Math.floor(Math.random() * (windowWidth - 150));
-      const randomTop = Math.floor(Math.random() * (windowHeight - 50));
-      button.style.left = `${randomLeft}px`;
-      button.style.top = `${randomTop}px`;
-    });
   }
 
   window.addEventListener("load", sebarkanMenu);
