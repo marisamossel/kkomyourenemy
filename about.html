@@ -1,161 +1,197 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>About - kkom's</title>
   <style>
-    body {
+    @import url('https://fonts.googleapis.com/css2?family=Mynerve&display=swap');
+
+    * {
       margin: 0;
-      font-family: sans-serif;
-      background: black;
-      color: white;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Mynerve', cursive;
+      color: #333;
+      position: relative;
+      min-height: 100vh;
       overflow-x: hidden;
     }
 
-    main {
-      height: 500vh;
-      background: black;
-      position: relative;
-    }
-
-    section {
-      position: sticky;
-      top: 0;
-      width: 100vw;
-      height: 100vh;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-    }
-
-    .scroll-cta {
-      position: absolute;
-      bottom: 30px;
-      font-size: 18px;
-      color: white;
-      opacity: 0;
-    }
-
-    .bg-grid {
-      position: absolute;
+    body::before {
+      content: "";
+      position: fixed;
       top: 0;
       left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: radial-gradient(circle, rgba(255,255,255,0.03) 1px, transparent 1px);
-      background-size: 30px 30px;
-      pointer-events: none;
-      z-index: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('https://i.pinimg.com/736x/97/78/86/9778865f9fb6c6ab7a40925667a1cd6b.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      opacity: 0.7;
+      z-index: -1;
     }
 
-    .blueprint {
-      width: 80%;
-      height: 80%;
-      max-width: 1000px;
-      max-height: 700px;
+    h1.floating-title {
+      text-align: center;
+      font-size: 3rem;
+      color: #222;
+      margin-top: 20vh;
+      animation: float 4s ease-in-out infinite;
     }
 
-    .wingspan {
-      position: absolute;
-      left: 10%;
-      top: 40%;
-      transform: translateY(-50%);
+    .dot-separator {
+      text-align: center;
+      font-size: 2rem;
+      line-height: 1.5;
+      color: #444;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
     }
 
-    .line {
-      stroke: white;
-      stroke-width: 2px;
-      fill: none;
+    .grid-1 {
+      display: flex;
+      justify-content: flex-start;
+      margin-top: 2rem;
     }
 
-    h2 {
-      font-size: 14px;
-      font-weight: 400;
-      margin-top: 10px;
+    .grid-1 img {
+      height: 90vh;
+      object-fit: cover;
+      display: block;
+      transform: translateX(-200px);
+    }
+
+    .grid-2 {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 2rem;
+    }
+
+    .grid-2 img {
+      height: 60vh;
+      object-fit: cover;
+      display: block;
+      transform: translateX(300px);
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr); /* 12 kolom */
+      gap: 10px;
+      font-size: 4em;
+      margin: 100px 20px;
+    }
+
+    .autoBLur {
+      animation: autoBLurAnimation linear both;
+      animation-timeline: view();
+    }
+
+    @keyframes autoBLurAnimation {
+      0% {
+        filter: blur(40px);
+      }
+      45%, 55% {
+        filter: blur(0px);
+      }
+      100% {
+        filter: blur(40px);
+      }
+    }
+
+    /* Posisi teks */
+    .left {
+      text-align: left;
+      grid-column: 2 / 6;
+    }
+
+    .right {
+      text-align: right;
+      grid-column: 7 / 13;
+    }
+
+    .center {
+      text-align: center;
+      grid-column: 1 / 12;
+    }
+
+    .full {
+      text-align: center;
+      grid-column: 1 / 10;
+    }
+
+    .autoShow {
+      animation: autoShowAnimation both;
+      animation-timeline: view(70% 5%);
+    }
+
+    @keyframes autoShowAnimation {
+      from {
+        opacity: 0;
+        transform: translateY(200px) scale(0.3);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0px);
+      }
+      50% {
+        transform: translateY(-15px);
+      }
+    }
+
+    @media (max-width: 600px) {
+      h1.floating-title {
+        font-size: 2rem;
+        margin-top: 25vh;
+      }
+
+      .grid-3 {
+        font-size: 2.5em;
+        display: block;
+      }
     }
   </style>
 </head>
 <body>
-  <main>
-    <section>
-      <div class="scroll-cta">↓ scroll down ↓</div>
-      <div class="bg-grid"></div>
-      <svg class="blueprint" viewBox="0 0 1000 700">
-        <!-- Garis panjang wingspan -->
-        <line id="line-wingspan" class="line" x1="50" y1="350" x2="950" y2="350" />
-        <!-- Label -->
-        <foreignObject x="50" y="360" width="200" height="50">
-          <div class="wingspan">
-            <h2>Wingspan = Pengalaman yang membentang dari dulu sampai sekarang.</h2>
-          </div>
-        </foreignObject>
-        <!-- Garis panjang length -->
-        <line id="line-length" class="line" x1="500" y1="50" x2="500" y2="650" />
-        <!-- Label -->
-        <foreignObject x="510" y="50" width="200" height="50">
-          <div class="wingspan">
-            <h2>Length = Progres yang dibangun setahap demi setahap.</h2>
-          </div>
-        </foreignObject>
-        <!-- Circle -->
-        <circle id="circle-phalange" class="line" cx="500" cy="350" r="40" />
-      </svg>
-    </section>
-  </main>
+  <h1 class="floating-title">about me &amp; this blog</h1>
+  <div class="dot-separator">.<br>.<br>.<br>.</div>
+  
+  <section class="grid-1">
+    <div class="autoShow">
+      <figure>
+        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhWHnNX0eYobpJpn-RhCCRasCJ48p7y9g7O4jjcc5WGqy-k_ghI5wbfU7CklMyjwpXy_Sbg_DDq6l7Hw86LJKZZSqAtxksfuIoIBGK_J0LWQ8WiclIaZSCf1Ey_GI8AmUGABR3mRfJwjgw1bVD7DvzOvF7xgckknoOHVfjezV2TkrFsVCgUz6o74cEOTfsp/s2986/02.png" alt="Contoh Gambar">
+      </figure>
+    </div>
+  </section>
 
-  <!-- GSAP + ScrollTrigger -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-  <script src="https://assets.codepen.io/16327/DrawSVGPlugin3.min.js"></script>
+  <section class="grid-3">
+    <div class="autoBLur left">you are</div>
+    <div class="autoBLur right">inside</div>
+    <div class="autoBLur center">my head</div>
+    <div class="autoBLur right">right now.</div>
+    <div class="autoBLur full">good luck finding the exit!</div>
+  </section>
 
-  <script>
-    gsap.registerPlugin(ScrollTrigger, DrawSVGPlugin);
+  <section class="grid-2">
+    <div class="autoShow">
+      <figure>
+        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhZhyv2LlELaV505hlilkmhjhNNThw_XaM6_fYmWYYD_UwvvJwsy5bOFQ8cb8Y7uKuWJBXW8MQqsP4I024dHAevhR14iRRytog2CV9cttVExbfGf8eXfUCAVjfbrOGe7j4EhF-sRsBn7qrhy2y8PwoMXhLt7iSmjlx8wQy2-nB6-_zeuTU9uUpkdYRVlA6r/s2247/03.png" alt="Contoh Gambar">
+      </figure>
+    </div>
+  </section>
 
-    gsap.set('#line-length', { drawSVG: 0 });
-    gsap.set('#line-wingspan', { drawSVG: 0 });
-    gsap.set('#circle-phalange', { drawSVG: 0 });
 
-    gsap.to('.scroll-cta', {
-      opacity: 1,
-      delay: 1,
-      duration: 1
-    });
 
-    // Wingspan animation
-    gsap.to('#line-wingspan', {
-      scrollTrigger: {
-        trigger: '#line-wingspan',
-        start: 'top center',
-        end: 'bottom center',
-        scrub: true
-      },
-      drawSVG: "100%"
-    });
-
-    // Length animation
-    gsap.to('#line-length', {
-      scrollTrigger: {
-        trigger: '#line-length',
-        start: 'top center',
-        end: 'bottom center',
-        scrub: true
-      },
-      drawSVG: "100%"
-    });
-
-    // Circle animation
-    gsap.to('#circle-phalange', {
-      scrollTrigger: {
-        trigger: '#circle-phalange',
-        start: 'top center',
-        end: 'bottom center',
-        scrub: true
-      },
-      drawSVG: "100%"
-    });
-  </script>
 </body>
 </html>
