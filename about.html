@@ -81,11 +81,52 @@
 
     .grid-3 {
       display: grid;
-      grid-template-columns: repeat(12, 1fr); /* 12 kolom */
+      grid-template-columns: repeat(12, 1fr);
       gap: 10px;
       font-size: 4em;
       margin: 100px 20px;
     }
+
+    .profile .image {
+      margin-top: 10px;
+      width: 100%;
+      height: 600px;
+      position: relative;
+    }
+@keyframes float {
+  0%   { transform: translateX(-50%) translateY(0); }
+  50%  { transform: translateX(-50%) translateY(-10px); }
+  100% { transform: translateX(-50%) translateY(0); }
+}
+  .profile .image img {
+  position: absolute;
+  max-height: 90%;
+  max-width: 100%;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  transition: transform 0.4s ease;
+  pointer-events: auto;
+  animation: float 4s ease-in-out infinite;
+/* Atur urutan gambar */
+}
+.profile .image img:nth-child(1) {
+  z-index: 1;
+}
+
+.profile .image img:nth-child(2) {
+  left: 45%;
+  transform: translateX(-50%) translateY(0px);
+  z-index: 2;
+  bottom: 62px;
+  max-height: 70%;
+  max-width: 70%;
+  transition: transform 0.4s ease;
+ 
+}
+.profile .image img:nth-child(2):hover {
+   transform: scale(1.1);
+}
 
     .autoBLur {
       animation: autoBLurAnimation linear both;
@@ -104,7 +145,6 @@
       }
     }
 
-    /* Posisi teks */
     .left {
       text-align: left;
       grid-column: 2 / 6;
@@ -166,7 +206,7 @@
 <body>
   <h1 class="floating-title">about me &amp; this blog</h1>
   <div class="dot-separator">.<br>.<br>.<br>.</div>
-  
+
   <section class="grid-1">
     <div class="autoShow">
       <figure>
@@ -191,7 +231,12 @@
     </div>
   </section>
 
-
+  <section class="profile">
+      <div class="image">
+        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh0v8nA2XXon7sKezUadPInuP2PLbr4VISPdJyCZJi4P-lwlxWKFxbhBtoSL6iYRnLQqwla79rZ08jtX1eKYOm3QsMgfwmZfyHkyWukJsfXtrjxeOCPvEIBiFT0CHVdLlJR7iiErAM1B-YtmvCZxcWOCzNt_Ed56acWm-HgZJEiO48kPCzkeO9zYFBy1vwB/s2380/ig%20frame.png" alt="">
+        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgj83U8qprPeR4KOv9p8Qy1NFtKGL3NhWPva8iNMHKwL-gJmD_y7paJt1E2X3wQ_LVjsIt8q-9r8-kH7tBZwvTpw8RGgLs71PJ8VM5APvby6FO7tSc0JwvA2n8QRwRdY4HSqh8Uz6PQBxc7lhv1YaI8eWn89Y5f4l5m-fMangrSYoE3xqXosLChvLDu6HId/s2716/2.png" alt="">
+      </div>
+    </section>
 
 </body>
 </html>
