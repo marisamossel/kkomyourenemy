@@ -28,7 +28,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background-image: url('https://i.pinimg.com/736x/97/78/86/9778865f9fb6c6ab7a40925667a1cd6b.jpg');
+      background-image: url('https://i.pinimg.com/736x/90/78/02/90780297374cb34f6e11564818e8cbfe.jpg');
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
@@ -87,46 +87,65 @@
       margin: 100px 20px;
     }
 
-    .profile .image {
-      margin-top: 10px;
-      width: 100%;
-      height: 600px;
-      position: relative;
-    }
-@keyframes float {
-  0%   { transform: translateX(-50%) translateY(0); }
-  50%  { transform: translateX(-50%) translateY(-10px); }
-  100% { transform: translateX(-50%) translateY(0); }
-}
-  .profile .image img {
-  position: absolute;
-  max-height: 90%;
-  max-width: 100%;
-  left: 50%;
-  bottom: 0;
-  transform: translateX(-50%);
-  transition: transform 0.4s ease;
-  pointer-events: auto;
-  animation: float 4s ease-in-out infinite;
-/* Atur urutan gambar */
-}
-.profile .image img:nth-child(1) {
-  z-index: 1;
+.stack-container {
+  position: relative;
+  width: 400px;
+  height: 400px;
+  margin: 100px auto;
 }
 
-.profile .image img:nth-child(2) {
-  left: 45%;
-  transform: translateX(-50%) translateY(0px);
+
+
+/* Gambar belakang */
+.stack-container img.back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+  pointer-events: none;
+  z-index: 1;
+  animation: float 3s ease-in-out infinite;
+}
+
+.front-wrapper {
+  position: absolute;
+  top: 9%;
+  left: -20%;
+  width: 130%;
   z-index: 2;
-  bottom: 62px;
-  max-height: 70%;
-  max-width: 70%;
+  animation: float 3s ease-in-out infinite;
+}
+
+
+/* Pause animasi kalau hover */
+.front-wrapper:hover {
+  animation-play-state: paused;
+}
+
+/* Gambar depan */
+.front-wrapper img {
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
   transition: transform 0.4s ease;
- 
+  pointer-events: auto;
+  transform: translateY(50px); /* posisi turun awal */
 }
-.profile .image img:nth-child(2):hover {
-   transform: scale(1.1);
+
+/* Hover zoom */
+.front-wrapper:hover img {
+  transform: translateY(30px) scale(1.08);
 }
+
+/* Animasi floating */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
 
     .autoBLur {
       animation: autoBLurAnimation linear both;
@@ -231,12 +250,19 @@
     </div>
   </section>
 
-  <section class="profile">
-      <div class="image">
-        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh0v8nA2XXon7sKezUadPInuP2PLbr4VISPdJyCZJi4P-lwlxWKFxbhBtoSL6iYRnLQqwla79rZ08jtX1eKYOm3QsMgfwmZfyHkyWukJsfXtrjxeOCPvEIBiFT0CHVdLlJR7iiErAM1B-YtmvCZxcWOCzNt_Ed56acWm-HgZJEiO48kPCzkeO9zYFBy1vwB/s2380/ig%20frame.png" alt="">
-        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgj83U8qprPeR4KOv9p8Qy1NFtKGL3NhWPva8iNMHKwL-gJmD_y7paJt1E2X3wQ_LVjsIt8q-9r8-kH7tBZwvTpw8RGgLs71PJ8VM5APvby6FO7tSc0JwvA2n8QRwRdY4HSqh8Uz6PQBxc7lhv1YaI8eWn89Y5f4l5m-fMangrSYoE3xqXosLChvLDu6HId/s2716/2.png" alt="">
-      </div>
-    </section>
+  <section>
+  <div class="stack-container">
+    <img class="back"
+      src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh0v8nA2XXon7sKezUadPInuP2PLbr4VISPdJyCZJi4P-lwlxWKFxbhBtoSL6iYRnLQqwla79rZ08jtX1eKYOm3QsMgfwmZfyHkyWukJsfXtrjxeOCPvEIBiFT0CHVdLlJR7iiErAM1B-YtmvCZxcWOCzNt_Ed56acWm-HgZJEiO48kPCzkeO9zYFBy1vwB/s2380/ig%20frame.png"
+      alt="belakang">
+
+    <div class="front-wrapper">
+      <img class="front"
+        src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgj83U8qprPeR4KOv9p8Qy1NFtKGL3NhWPva8iNMHKwL-gJmD_y7paJt1E2X3wQ_LVjsIt8q-9r8-kH7tBZwvTpw8RGgLs71PJ8VM5APvby6FO7tSc0JwvA2n8QRwRdY4HSqh8Uz6PQBxc7lhv1YaI8eWn89Y5f4l5m-fMangrSYoE3xqXosLChvLDu6HId/s2716/2.png"
+        alt="depan">
+    </div>
+  </div>
+  </section>
 
 </body>
 </html>
