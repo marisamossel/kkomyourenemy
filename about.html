@@ -220,6 +220,65 @@
         display: block;
       }
     }
+    
+    
+    @media (max-width: 600px) {
+  h1.floating-title {
+    font-size: 2rem;
+    margin-top: 20vh;
+    padding: 0 10px;
+  }
+
+  .grid-1,
+  .grid-2 {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .grid-1 img,
+  .grid-2 img {
+    height: auto;
+    width: 90vw;
+    max-width: 100%;
+    transform: none;
+  }
+
+  .grid-3 {
+    font-size: 2em;
+    display: block;
+    text-align: center;
+  }
+
+  .left,
+  .right,
+  .center,
+  .full {
+    grid-column: auto;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+
+  .stack-container {
+    width: 90vw;
+    height: auto;
+  }
+
+  .front-wrapper {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    transform: none;
+  }
+
+  .front-wrapper img,
+  .stack-container img.back {
+    width: 100%;
+    height: auto;
+  }
+}
+
+    
   </style>
 </head>
 <body>
