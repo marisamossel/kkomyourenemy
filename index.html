@@ -29,8 +29,10 @@
       font-size: 28px;
       color: white;
       z-index: 20;
-      white-space: nowrap;
-      overflow: hidden;
+      white-space: normal;
+      overflow: visible;
+      flex-wrap: wrap;
+      padding: 0 5vw;
       text-shadow: 0 0 8px white;
       display: none;
       align-items: center;
@@ -178,9 +180,13 @@
 @media (max-width: 600px) {
   #judul {
     font-size: 18px;
-    white-space: nowrap;
-    padding: 0 10px;
+    white-space: normal;
+    flex-wrap: wrap;
+    padding: 0 5vw;
+    text-align: center;
   }
+}
+
 
   #instruction,
   #instruction1 {
