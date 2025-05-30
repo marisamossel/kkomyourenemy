@@ -278,7 +278,109 @@
   }
 }
 
+.im-kkom-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30vh; /* dari 50vh jadi 30vh */
+  margin-top: -160px; /* mendekatkan ke atas */
+}
+
+.im-kkom-section h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #000;
+}
+.kkom-info {
+  display: flex;
+  justify-content: center;
+  margin-top: -60px;
+  align-items: center;
+  text-align: center;
+  padding: 2rem 1rem;
+  font-size: 1.2rem;
+  color: #000;
+  line-height: 1.6;
+}
+
+ .muter {
+      width: 80%;
+      max-width: 800px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 60px;
+    }
+
+    .row {
+      display: flex;
+    }
+
+    .left {
+      justify-content: flex-start;
+    }
+
+    .right {
+      justify-content: flex-end;
+    }
+
+    .rotate-item {
+      width: 450px;
+      height: 450px;
+      transition: transform 0.1s linear;
+    }
     
+    @media (max-width: 600px) {
+  .rotate-item {
+    width: 90vw;
+    height: auto;
+  }
+
+  .row {
+    justify-content: center !important;
+  }
+}
+
+.last-image {
+  width: 300px;
+  height: 450px;
+  border-radius: 12px;
+}
+
+/* Responsif di HP */
+@media (max-width: 600px) {
+  .last-image {
+    width: 70vw;
+    height: auto;
+    border-width: 2px;
+  }
+}
+
+.back-button {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background: rgba(255, 255, 255, 0.8);
+  color: #000;
+  text-decoration: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: bold;
+  z-index: 9999;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  transition: background 0.3s;
+}
+
+.back-button:hover {
+  background: #ddd;
+}
+
+body {
+  cursor: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhrrVTxCtW0gnMtun62KhI8hyU0b8Q1ZgCRz_SwzGXdflwIdZrFs1dsQ__LOCQ59cNLxO-kX8PDF3CBfgrXJQDKCybvfYUq8GXGvgaD8kbS3MlMy0PvCzlNxNZ0sOE-fRPUHi7G8fdhFw5gQC9UKJ6eaI1s_5IPZIzeT8RcoNrIdF57PFoa6OJGB0wQVdD_/s32/Pesawat%20Kertas%20Pixel_cursor.png'), auto;
+}
+
+
   </style>
 </head>
 <body>
@@ -322,6 +424,116 @@
     </div>
   </div>
   </section>
+  
+  <section class="im-kkom-section">
+  <h2 class="autoShow">i'm kkom</h2>
+</section>
+
+<section class="kkom-info">
+<p class="autoShow">
+TL: 1 desember <br>
+Imma Sagittarian,<br>
+Chaos collector, and the chaos itself <br>
+Artis fav: Roseanne Park<br>
+Fun fact: unapologetically no fun<br>
+MaFa: pempek palembang,   sushi,   ramen,   bakpia <br>
+MiFa: caramel frappe,   milk tea,   air putih 
+</p>
+</section>
+
+<div class="muter">
+    <div class="row left"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiazN-IKmFIw0oN2tR_x3VqmWKUFz9sOcv_RV4aCqYbkoQCASJknCvDDJSRgKGCB7P420pw_PXZNBS7quQgf8ITNMCsPn-VTJyenrF_eYkGCQ5xKQQx2HGC9vGC5d8iSpAgcTK1Dag-eeH4LYwY9AAXCjZKttnNT8n7IZbfbeE0p67_eOqY7Tlh6YA8iTT2/s895/2.png" class="rotate-item" alt="pempek"></div>
+    <div class="row right"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgTt-f5m4-g7p_An5Svirxfku9MljN2kRY_ulTDMTG-7RDHBKkItP7obrXe79f1fjKaF6mS4_95P7HSmGNt-xS894Nf3_HvwoUU09v2HP58nzi6aONfVQnstIeNxDpuoHDhQaN5TvQQNZ7dBbHqINiK9ALfUDHnW-13j7OPqq2diFKTDdfj5lESsuWYEc5a/s736/1.png" class="rotate-item" alt="sushi"></div>
+    <div class="row left"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjUkkd-iKeL8ToqIN9s6E8sMpyIxAQeuJtkQvISlw8ZLcDk-7t1iO-iiRl5APQ6skBcwdYnzpFk3PnE6572MDQqPDQIhLnbMn0HOyz2_wkPNSIRIYPQeOB7w4vOPdwMxq_qeSs_PPs2D_WvssY-ustQS5pBQQr1QNE_DPlm9PvubHCI6oQnD5AUSNQdn2S7/s1024/7.png" class="rotate-item" alt="ramen"></div>
+    <div class="row right"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhigV0EhRyCvJhYWoLDqJeg2bK2HuSlcr2RelJruFFmvJxNY2GgONo097yCsktWkFs1aZSSws9HlFJCwURmrDE8wntBpFklrNVjLuaSyKf1JDwBa5MA6CRTjVgvc_nptY0m9DL780rBX6IPp2vciczoWeWniBh7HuE4gYb_8owkTz4x0jlH7pGM83xkOavV/s353/6.png" class="rotate-item" alt="bakpia"></div>
+    <div class="row left"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhel8UHpHgVbCPHHcDZtqSEWGahyKznnTBb37kjb9vQ3JnxjQrQD7OBqxIHDEPOjTGOSmfilLIZq-M-42Pe7rmEIei8kZ2ntNxRdkBwgm5iCaCu2gFPLzbxLGLar9KOzPRiGrIsM5ljHqUV7GooT5u6KZyNX7vm4DkI-Vc0Hwo7HUDhBKOGdvbDySDtlh6L/s736/4.png" class="rotate-item" alt="caramel"></div>
+    <div class="row right"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgTvmTPDtJhyphenhyphennXB_P7azCPkmfAWaOPffGuEbS4G6eYdGIJ9XuiBUZnioAkYAwoNlbk4kxQ5hkfVCeZcNVWoCdhMXsJl2noUaeHFbHZCryTAxIZHvZqlJzYTOIy3ChhZ_dGxIQYZuVH4LETMkd5eXVlnSlxEBW8SGhTd-YSUfetfa2wmCD_3QpyNmEoeqUSJ/s626/3.png" class="rotate-item" alt="milktea"></div>
+    <div class="row left">
+  <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhFBSwkKoQsGBKIhOQz2Jb-enBuyRCDOqHFlodkXv42eW03GXMHbbD15yU3-dL4fcaBOfW5eP45kfeeJxcceGZ60sx5bYdDAMbW9cjGE2uSoTxoBUxknC5NNrUVsAeYdLoV5FzefXQu5E4WpPz-vRH0bAvcv0HTFm-SPOWwaJPM94FHSvPIIiajj_c7emPM/s1536/5.png"
+       class="rotate-item last-image" alt="air">
+</div>
+
+  </div>
+
+<script>
+    const items = document.querySelectorAll('.rotate-item');
+
+    function rotateOnScroll() {
+      items.forEach(img => {
+        const rect = img.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
+
+        if (rect.top < windowHeight && rect.bottom > 0) {
+          const visiblePercent = (windowHeight - rect.top) / (windowHeight + rect.height);
+          const clamped = Math.max(0, Math.min(1, visiblePercent));
+          const degrees = clamped * 360;
+          img.style.transform = `rotate(${degrees}deg)`;
+        }
+      });
+    }
+
+    window.addEventListener('scroll', () => {
+      requestAnimationFrame(rotateOnScroll);
+    });
+
+    rotateOnScroll();
+  </script>
+  
+  <section class="kkom-info">
+  <p class="autoShow">
+    ! D I S C L A I M E R ! <br>
+    sorry to disappoint you — this blog coding is AI’s, but the chaos, color, and soul are mine. <br><br>
+    <strong>find me on instagram</strong><br>
+    <a href="https://www.instagram.com/marisa.mossel" target="_blank">@marisa.mossel</a>
+  </p>
+</section>
+<div class="dot-separator">.<br>.<br>.<br>.</div>
+
+<section class="kkom-info">
+<p class="autoShow">
+<strong>coding by:</strong> <br>
+<a href="https://chat.openai.com/" target="_blank">1. chatGPT</a><br>
+<a href="https://www.youtube.com/@LunDevCode" target="_blank">2. lundev  Code</a> <br>
+
+<strong>pictures:</strong> <br>
+<a href="https://www.pinterest.com/" target="_blank">1. pinterest</a><br>
+<a href="https://sora.chatgpt.com/explore">2. generated in SORA GPT</a><br>
+<a> 3. some pictures are mine </a><br>
+
+<strong>music &amp; sound:</strong> <br>
+<a href="https://www.youtube.com/@relaxingbackgroundmusic" target="_blank">1. Relaxing Background Music Channel on YouTube</a><br>
+<a href="https://www.myinstants.com/" target="_blank">2. quack duck sound</a><br>
+<a> 2025 </a>
+</p>
+</section>
+
+
+<script>
+  // Fallback untuk animasi autoShow jika browser tidak support `animation-timeline`
+  const autoShows = document.querySelectorAll('.autoShow');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0) scale(1)';
+        entry.target.style.transition = 'all 0.8s ease-out';
+      }
+    });
+  }, {
+    threshold: 0.5 // seberapa banyak elemen harus terlihat sebelum animasi mulai
+  });
+
+  autoShows.forEach(el => {
+    // Set keadaan awal (seperti dalam CSS animasi)
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(200px) scale(0.3)';
+    observer.observe(el);
+  });
+</script>
+
 
 </body>
+<a href="javascript:history.back()" class="back-button">← Back</a>
+
 </html>
