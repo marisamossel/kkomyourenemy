@@ -29,7 +29,7 @@
       font-size: 28px;
       color: white;
       z-index: 20;
-      white-space: normal;
+      white-space: nowrap;
       overflow: hidden;
       text-shadow: 0 0 8px white;
       display: none;
@@ -151,6 +151,8 @@
   z-index: 1;
   pointer-events: none;
   white-space: nowrap;
+  max-width: 90vw;
+  word-wrap: break-word;
 }
 
 #instruction1 {
@@ -167,9 +169,28 @@
   z-index: 1;
   pointer-events: none;
   white-space: nowrap;
+  max-width: 90vw;
+  word-wrap: break-word;
 }
 
 }
+
+@media (max-width: 600px) {
+  #judul {
+    font-size: 18px;
+    white-space: nowrap;
+    padding: 0 10px;
+  }
+
+  #instruction,
+  #instruction1 {
+    font-size: 12px;
+    padding: 8px 12px;
+    max-width: 90vw;
+    white-space: normal;
+  }
+}
+
 
 
   </style>
@@ -194,7 +215,7 @@
   <button style="top: 85%; left: 10%;" onclick="window.location.href='https://marisamossel.github.io/kkomyourenemy/game.html'">Game</button>
   <button style="top: 75%; left: 70%;" onclick="window.location.href='https://marisamossel.github.io/kkomyourenemy/blacklist.html'">My Blacklist</button>
   <button style="top: 15%; left: 80%;" onclick="window.location.href='https://marisamossel.github.io/kkomyourenemy/story.html'">My Story</button>
-  <button style="top: 75%; left: 50%;" onclick="window.location.href='https://marisamossel.github.io/kkomyourenemy/photobooth.html'">Online Photo Booth</button>  
+  <button style="top: 65%; left: 50%;" onclick="window.location.href='https://marisamossel.github.io/kkomyourenemy/photobooth.html'">Online Photo Booth</button>  
 </div>
 
 
