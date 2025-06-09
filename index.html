@@ -154,7 +154,7 @@ html, body {
   pointer-events: none;
   max-width: 90vw;
   word-wrap: break-word;
-  white-space: nowrap;
+  white-space: normal; /* <= ini yang penting biar nggak numpuk horizontal */
 }
 
 #instruction {
@@ -164,7 +164,7 @@ html, body {
 }
 
 #instruction1 {
-  top: calc(50% + 20px);
+  top: calc(50% + 60px); /* lebih turun dari sebelumnya */
   padding: 12px 24px;
   font-size: 12px;
 }
@@ -176,19 +176,15 @@ html, body {
   }
 
   #instruction {
-    font-size: 14px; /* tetap 14px */
+    font-size: 14px;
     padding: 8px 12px;
-    white-space: normal;
   }
 
   #instruction1 {
-    font-size: 12px; /* tetap 12px */
+    font-size: 12px;
     padding: 8px 12px;
-    white-space: normal;
   }
 }
-
-
   </style>
 
 </head>
