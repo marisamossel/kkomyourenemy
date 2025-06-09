@@ -9,101 +9,102 @@
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Space+Mono&display=swap');
 
-    html, body {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      overflow-x: hidden;
-      overflow-y: auto;
-      font-family: sans-serif;
-      background: #000;
-      cursor: url("https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjg6LXUElpu5_m4_1OdNZAssDvmfkzsAPkYFx2G1ed9Qig1axTybzTFOjoQIr4LkMfsrp99ML2oUkSALLW3ZIj80Xmor5ccl-DKEvSxCiKQbKfYcnfwgTdn_6sOd5Zkp0v5WTn6rYFZrPX9bp3glcqD9VN8vYUrq3XeTkG6XTVX-Ct5Gs4F_WnHkV2tnwQG/s89/koi%20moon_cursor_kecil.png"), auto;
-    }
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  font-family: sans-serif;
+  background: #000;
+  cursor: url("https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjg6LXUElpu5_m4_1OdNZAssDvmfkzsAPkYFx2G1ed9Qig1axTybzTFOjoQIr4LkMfsrp99ML2oUkSALLW3ZIj80Xmor5ccl-DKEvSxCiKQbKfYcnfwgTdn_6sOd5Zkp0v5WTn6rYFZrPX9bp3glcqD9VN8vYUrq3XeTkG6XTVX-Ct5Gs4F_WnHkV2tnwQG/s89/koi%20moon_cursor_kecil.png"), auto;
+}
 
-    #judul {
-      position: absolute;
-      top: 5%;
-      left: 50%;
-      transform: translateX(-50%);
-      font-family: 'Space Mono', monospace;
-      font-size: 28px;
-      color: white;
-      z-index: 20;
-      white-space: normal;
-      overflow: visible;
-      flex-wrap: wrap;
-      padding: 0 5vw;
-      text-shadow: 0 0 8px white;
-      display: none;
-      align-items: center;
-    }
+#judul {
+  position: absolute;
+  top: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Space Mono', monospace;
+  font-size: 28px;
+  color: white;
+  z-index: 20;
+  white-space: normal;
+  overflow: visible;
+  flex-wrap: wrap;
+  padding: 0 5vw;
+  text-shadow: 0 0 8px white;
+  display: none;
+  align-items: center;
+}
 
-    .cursor {
-      font-weight: bold;
-      margin-left: 5px;
-      animation: blink 0.7s steps(1) infinite;
-      color: white;
-      text-shadow: 0 0 6px white;
-    }
+.cursor {
+  font-weight: bold;
+  margin-left: 5px;
+  animation: blink 0.7s steps(1) infinite;
+  color: white;
+  text-shadow: 0 0 6px white;
+}
 
-    @keyframes blink {
-      0%, 50% { opacity: 1; }
-      51%, 100% { opacity: 0; }
-    }
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
 
-    #splash {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: #fcd641;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 1000;
-      flex-direction: column;
-    }
+#splash {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #fcd641;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  flex-direction: column;
+}
 
-    #splash img {
-      width: 150px;
-      cursor: pointer;
-      animation: float 2s ease-in-out infinite;
-    }
+#splash img {
+  width: 150px;
+  cursor: pointer;
+  animation: float 2s ease-in-out infinite;
+}
 
-    @keyframes float {
-      0% { transform: translateY(0); }
-      50% { transform: translateY(-15px); }
-      100% { transform: translateY(0); }
-    }
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+  100% { transform: translateY(0); }
+}
 
-    #main {
-      display: none;
-      width: 100%;
-      height: 100%;
-      position: relative;
-      background: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg7e4_f5p4kL0FJbOCfXLJoxY8ZeOMLvM7TQwmt9ttaSHaQ6lfxMUpwMpl3YNKKXXbzpYLuzzrGsOtmtOVFonZgV42x6e9CiGtecSOkjWRU9zf65JEnvnBLppQP0R5vtNwT-0GRGocYLQ4CyaAlevghlwCA90UTqnUtOBCSdkPRSMC83lNT4IXZLBPrsFCS/s2667/bg%20grainy%20black.png') no-repeat center center fixed;
-      background-size: cover;
-    }
+#main {
+  display: none;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg7e4_f5p4kL0FJbOCfXLJoxY8ZeOMLvM7TQwmt9ttaSHaQ6lfxMUpwMpl3YNKKXXbzpYLuzzrGsOtmtOVFonZgV42x6e9CiGtecSOkjWRU9zf65JEnvnBLppQP0R5vtNwT-0GRGocYLQ4CyaAlevghlwCA90UTqnUtOBCSdkPRSMC83lNT4IXZLBPrsFCS/s2667/bg%20grainy%20black.png') no-repeat center center fixed;
+  background-size: cover;
+}
 
-    .floating-img {
-      width: 120px;
-      height: 120px;
-      position: absolute;
-      border-radius: 12px;
-      cursor: move;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-      transition: box-shadow 0.3s ease;
-      z-index: 10;
-    }
+.floating-img {
+  width: 120px;
+  height: 120px;
+  position: absolute;
+  border-radius: 12px;
+  cursor: move;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.3s ease;
+  z-index: 10;
+}
 
-    .floating-img:hover {
-      box-shadow: 0 0 15px 5px white;
-    }
+.floating-img:hover {
+  box-shadow: 0 0 15px 5px white;
+}
 
 #menu {
   position: relative;
   width: 100%;
-  height: 100vh; /* pastikan tombol punya ruang */
+  height: 100vh;
   pointer-events: auto;
   z-index: 1;
 }
@@ -120,84 +121,67 @@
   transition: all 0.3s ease;
   cursor: url("https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjg6LXUElpu5_m4_1OdNZAssDvmfkzsAPkYFx2G1ed9Qig1axTybzTFOjoQIr4LkMfsrp99ML2oUkSALLW3ZIj80Xmor5ccl-DKEvSxCiKQbKfYcnfwgTdn_6sOd5Zkp0v5WTn6rYFZrPX9bp3glcqD9VN8vYUrq3XeTkG6XTVX-Ct5Gs4F_WnHkV2tnwQG/s89/koi%20moon_cursor_kecil.png"), auto;
 }
-    #menu button:hover {
-      background: #333;
-      transform: scale(1.05);
-      transition: 0.3s ease;
-      box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
-    }
 
-    #music-toggle {
-      position: absolute;
-      bottom: 20px;
-      right: 20px;
-      background: #111;
-      color: #fff;
-      border: none;
-      padding: 10px 15px;
-      border-radius: 8px;
-      cursor: pointer;
-      z-index: 11;
-    }
-  #instruction {
+#menu button:hover {
+  background: #333;
+  transform: scale(1.05);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+}
+
+#music-toggle {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  background: #111;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  z-index: 11;
+}
+
+#instruction,
+#instruction1 {
   position: fixed;
-  top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translateX(-50%);
   color: yellow;
-  padding: 12px 24px;
   border-radius: 12px;
   font-family: monospace;
-  font-size: 14px;
   text-align: center;
   z-index: 1;
   pointer-events: none;
-  white-space: nowrap;
   max-width: 90vw;
   word-wrap: break-word;
+  white-space: nowrap;
+}
+
+#instruction {
+  top: 50%;
+  padding: 12px 24px;
+  font-size: 14px;
 }
 
 #instruction1 {
-  position: fixed;
-  top: calc(50% + 20px); /* 40px lebih bawah dari instruction */
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: yellow;
+  top: calc(50% + 20px);
   padding: 12px 24px;
-  border-radius: 12px;
-  font-family: monospace;
   font-size: 12px;
-  text-align: center;
-  z-index: 1;
-  pointer-events: none;
-  white-space: nowrap;
-  max-width: 90vw;
-  word-wrap: break-word;
-}
-
 }
 
 @media (max-width: 600px) {
   #judul {
     font-size: 18px;
-    white-space: normal;
-    flex-wrap: wrap;
-    padding: 0 5vw;
     text-align: center;
   }
-}
-
 
   #instruction,
   #instruction1 {
     font-size: 12px;
     padding: 8px 12px;
-    max-width: 90vw;
     white-space: normal;
   }
 }
-
-
 
   </style>
 
