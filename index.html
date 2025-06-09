@@ -394,19 +394,38 @@ selectedImages.forEach((url) => {
 
 
   setTimeout(() => {
-    Draggable.create(".floating-img", {
-      type: "x,y",
-      edgeResistance: 0.75,
-      bounds: "body",
-      inertia: true,
-      onDragStart: function () {
-        gsap.to(this.target, { scale: 1.05, duration: 0.2 });
-      },
-      onRelease: function () {
-        gsap.to(this.target, { scale: 1, duration: 0.3, ease: "elastic.out(1, 0.4)" });
-      }
-    });
-  }, 100);
+  Draggable.create(".floating-img", {
+    type: "x,y",
+    edgeResistance: 0.75,
+    bounds: "body",
+    inertia: true,
+
+    onPress: function () {
+      this.target.classList.add("active");
+    },
+
+    onDragStart: function () {
+      gsap.to(this.target, {
+        scale: 1.05,
+        duration: 0.2
+      });
+      this.target.style.boxShadow = "0 20px 40px rgba(0, 0, 0, 0.5)";
+      this.target.style.zIndex = "9999";
+    },
+
+    onRelease: function () {
+      gsap.to(this.target, {
+        scale: 1,
+        duration: 0.3,
+        ease: "elastic.out(1, 0.4)"
+      });
+      this.target.style.boxShadow = "none";
+      this.target.style.zIndex = "";
+
+      this.target.classList.remove("active");
+    }
+  });
+}, 100);
 
   const text = "hi! welcome to my space";
   const teksEl = document.querySelector(".teks");
