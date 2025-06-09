@@ -100,6 +100,10 @@ html, body {
 .floating-img:hover {
   box-shadow: 0 0 15px 5px white;
 }
+.floating-img.active {
+  box-shadow: 0 0 15px 5px white;
+}
+
 
 #menu {
   position: relative;
@@ -120,7 +124,13 @@ html, body {
   font-size: 14px;
   transition: all 0.3s ease;
   cursor: url("https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjg6LXUElpu5_m4_1OdNZAssDvmfkzsAPkYFx2G1ed9Qig1axTybzTFOjoQIr4LkMfsrp99ML2oUkSALLW3ZIj80Xmor5ccl-DKEvSxCiKQbKfYcnfwgTdn_6sOd5Zkp0v5WTn6rYFZrPX9bp3glcqD9VN8vYUrq3XeTkG6XTVX-Ct5Gs4F_WnHkV2tnwQG/s89/koi%20moon_cursor_kecil.png"), auto;
+
+  /* Tambahan ini penting */
+  max-width: 30vw;
+  white-space: normal;
+  word-break: break-word;
 }
+
 
 #menu button:hover {
   background: #333;
@@ -266,7 +276,6 @@ html, body {
   });
 
   const floatingContainer = document.getElementById("floating-container");
-  const unsplashKeywords = "retro,grainy,futuristic,art,aesthetic,dark,grunge,texture,black,white,mono";
 
   const imageUrls = [
   "https://i.pinimg.com/736x/37/2d/f6/372df6c8f44fdc73c54eb5fb83d6fd74.jpg",
@@ -413,6 +422,19 @@ selectedImages.forEach((url) => {
 
   window.addEventListener("load", sebarkanMenu);
   window.addEventListener("resize", sebarkanMenu);
+
+  document.querySelectorAll('.floating-img').forEach(img => {
+  img.addEventListener('touchstart', () => {
+    img.classList.add('active');
+  });
+
+  img.addEventListener('touchend', () => {
+    setTimeout(() => {
+      img.classList.remove('active');
+    }, 300); // Efek hilang setelah 0.3 detik
+  });
+});
+
 
 </script>
 
